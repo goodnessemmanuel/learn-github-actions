@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: job 1 step 1
-        uses: actions/checkout@v2
+# uses attribute helps to run multiple commands with a single line. this time the commands will come a public repository located in github url actions/checkout
+        uses: actions/checkout@v3
       - name: job 1 step 2
         run: |
           echo "runing first job step 2"
@@ -18,12 +19,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: job2 step 1
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: job2 step 2
         run: "Get-ChildItem Env: | Sort-Object Name"	
   job3:
     name: Third Job
     runs-on: ubuntu-latest
+#needs mean let job1, job2 to run before running this job (i.e. job3)
+    needs: [job1, job2]
     steps:
       - name: job3 step1
         run: echo "this job was edited using vim"
