@@ -44,3 +44,13 @@ jobs:
           else
               echo "not contained in list"
           fi
+
+      - name: Demo List Contains 2
+        run: |
+          isOne="${{ contains('["one", "two", "three"]', steps.set-var.outputs.repository ) }}"
+          echo "isOne 2 value is: $isOne"
+    
+          if "${{ contains('["one", "two", "three"]', steps.set-var.outputs.repository ) }}"
+          then
+            echo "list contains 2 item targeted: ${{ steps.set-var.outputs.repository }}" 
+          fi
