@@ -32,6 +32,7 @@ jobs:
         run: |
          repo="two"
          echo "repository=$repo" >> $GITHUB_OUTPUT
+         echo "repos=one,two,three" >> $GITHUB_OUTPUT
 
       - name: Demo List Contains
         run: |
@@ -47,10 +48,10 @@ jobs:
 
       - name: Demo List Contains 2
         run: |
-          isOne="${{ contains('["one", "two", "three"]', steps.set-var.outputs.repository ) }}"
+          isOne="${{ contains(steps.set-var.outputs.repos, steps.set-var.outputs.repository ) }}"
           echo "isOne 2 value is: $isOne"
     
-          if "${{ contains('["one", "two", "three"]', steps.set-var.outputs.repository ) }}"
+          if "${{ contains(steps.set-var.outputs.repos, steps.set-var.outputs.repository ) }}"
           then
-            echo "list contains 2 item targeted: ${{ steps.set-var.outputs.repository }}" 
+            echo "list ${{ steps.set-var.outputs.repos }} contain item targeted: ${{ steps.set-var.outputs.repository }}" 
           fi
