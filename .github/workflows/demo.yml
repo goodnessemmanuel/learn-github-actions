@@ -1,0 +1,33 @@
+name: Demo
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: job 1 step 1
+# uses attribute helps to run multiple commands with a single line. this time the commands will come a public repository located in github url actions/checkout
+        uses: actions/checkout@v3
+      - name: job 1 step 2
+        run: |
+          echo "runing first job step 2"
+          env | sort
+  job2:
+    name: Second Job
+    runs-on: windows-latest
+    steps:
+      - name: job2 step 1
+        uses: actions/checkout@v3
+      - name: job2 step 2
+        run: "Get-ChildItem Env: | Sort-Object Name"	
+  job3:
+    name: Demo Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Demo List Contains
+        run: |
+          if ${{ contains('["one", "two", "three"]', 'one') }}
+          echo "list contains item"
