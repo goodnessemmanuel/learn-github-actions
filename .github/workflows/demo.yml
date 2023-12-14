@@ -29,9 +29,10 @@ jobs:
     steps:
       - name: Demo List Contains
         run: |
-          repository="one"
+          # repository="one"
+          echo "repository=one" >> $GITHUB_ENV
           echo $repository
-          if [[ contains('["one", "two", "three"]', $repository ) ]]
+          if ${{ contains('["one", "two", "three"]', '$repository' ) }}
           then
             echo "list contains item targeted"
           else
