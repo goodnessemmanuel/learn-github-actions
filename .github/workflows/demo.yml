@@ -34,7 +34,7 @@ jobs:
           isOne="${{ contains('["one", "two", "three"]', '$repository' ) }}"
           echo "isOne value is: $isOne"
           echo $repository
-          if contains('["one", "two", "three"]', 'one')
+          if "contains('["one", "two", "three"]', 'one')"
           then
             echo "list contains item targeted"
           else
