@@ -31,7 +31,7 @@ jobs:
         run: |
           repository="one"
           echo $repository
-          if: contains('["one", "two", "three"]', $repository )
+          if [[ contains('["one", "two", "three"]', $repository ) ]]
           then
             echo "list contains item targeted"
           else
