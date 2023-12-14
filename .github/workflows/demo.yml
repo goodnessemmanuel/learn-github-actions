@@ -38,10 +38,10 @@ jobs:
           # echo "repository=one" >> $GITHUB_ENV
           isOne="${{ contains('["one", "two", "three"]', env.repository ) }}"
           echo "isOne value is: $isOne"
-          isTwo="${{ contains('["one", "two", "three"]',  env.repository) }}"
-          echo "isOne value is: $isTwo"
+
+          echo "repo value in env is: ${{ env.repository }}"
           echo $repository
-          if [[ "$repository" == 1 ]]
+
           if "contains('["one", "two", "three"]', 'one')"
           then
             echo "list contains item targeted"
