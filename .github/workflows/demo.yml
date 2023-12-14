@@ -30,4 +30,5 @@ jobs:
       - name: Demo List Contains
         run: |
           if ${{ contains('["one", "two", "three"]', 'one') }}
-          echo "list contains item"
+          then
+            echo "list contains item"
