@@ -30,7 +30,7 @@ jobs:
       - name: Demo List Contains
         run: |
           repository="one"
-          echo $repository >> $GITHUB_ENV
+          echo "repository=$repository" >> $GITHUB_ENV
           echo $repository
           if ${{ contains('["one", "two", "three"]', env.repository ) }}
           then
