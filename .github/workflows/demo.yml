@@ -29,22 +29,18 @@ jobs:
     steps:
       - name: set variable
         id: set-var
-        run:
-         echo "repository=$repository" >> $GITHUB_ENV
+        run: |
+         repo="two"
+         echo "repository=$repo" >> $GITHUB_OUTPUT
 
       - name: Demo List Contains
         run: |
-          repository="one"
-          # echo "repository=one" >> $GITHUB_ENV
-          isOne="${{ contains('["one", "two", "three"]', env.repository ) }}"
+          isOne="${{ contains('["one", "two", "three"]', steps.set-var.outputs.repository ) }}"
           echo "isOne value is: $isOne"
 
-          echo "repo value in env is: ${{ env.repository }}"
-          echo $repository
-
-          if "contains('["one", "two", "three"]', 'one')"
+          if "${{ contains('["one", "two", "three"]', steps.set-var.outputs.repository ) }}"
           then
-            echo "list contains item targeted"
+            echo "list contains item targeted: ${{ steps.set-var.outputs.repository }}" 
           else
               echo "not contained in list"
           fi
