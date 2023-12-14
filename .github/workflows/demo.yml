@@ -30,8 +30,8 @@ jobs:
       - name: Demo List Contains
         run: |
           repository="one"
-
-          if ${{ contains('["one", "two", "three"]', '$repository') }}
+          echo $repository
+          if: contains('["one", "two", "three"]', $repository )
           then
             echo "list contains item targeted"
           else
