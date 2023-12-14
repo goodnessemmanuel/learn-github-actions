@@ -32,7 +32,7 @@ jobs:
           repository="one"
           echo "repository=$repository" >> $GITHUB_ENV
           echo $repository
-          if ${{ contains('["one", "two", "three"]', env.repository ) }}
+          if: ${{ contains('["one", "two", "three"]', env.repository ) }}
           then
             echo "list contains item targeted"
           else
